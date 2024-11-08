@@ -1,0 +1,21 @@
+{
+  "name": "xijinping",
+  "version": "1.0.0",
+  "description": "your supreme leader!",
+  "main": "index.js",
+  "scripts": {
+    "launch": "ts-node src/main.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/voice": "^0.17.0",
+    "@types/node": "^22.8.6",
+    "discord.js": "^14.16.3",
+    "libsodium-wrappers": "^0.7.15",
+    "sequelize": "^6.37.5",
+    "sqlite3": "^5.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}

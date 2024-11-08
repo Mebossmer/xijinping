@@ -1,0 +1,11 @@
+{
+    "token": "MTMwMTg2MDA2NzgyMTQ5MDIyNw.GQojee.pVYVZkpu1f4OU8GpnIDOS-nLNhgxjBBOJAvRgk",
+    "clientId": "1301860067821490227",
+    "guildId": "1301865671503904768",
+    "filter": [
+        { "phrase": "mao", "amount": 1000 },
+        { "phrase": "zedong", "amount": 1000 },
+        { "phrase": "1989", "amount": -100000 },
+        { "phrase": "tiananmen", "amount": -100000 }
+    ]
+}
