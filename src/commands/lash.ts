@@ -25,7 +25,8 @@ module.exports = {
             element = await USERSTATS.create({
                 name: target.id,
                 credits: 0,
-                lashes: 1
+                lashes: 1,
+                lateRecord: 0
             })
         } else {
             element.increment("lashes")

@@ -15,7 +15,6 @@
     "libsodium-wrappers": "^0.7.15",
     "sequelize": "^6.37.5",
     "sqlite3": "^5.1.7",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.6.3"
+    "ts-node": "^10.9.2"
   }
 }

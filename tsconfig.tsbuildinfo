@@ -1,0 +1,1 @@
+{"root":["./src/main.ts","./src/commandregistry.ts","./src/creditshelper.ts","./src/filter.ts","./src/commands/lash.ts","./src/commands/leaderboard.ts","./src/commands/propaganda.ts","./src/commands/socialcredits.ts","./src/commands/timer.ts"],"version":"5.6.3"}

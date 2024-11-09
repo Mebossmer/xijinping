@@ -38,7 +38,8 @@ export async function grantSocialCredits(target: User, credits: number) {
         element = await USERSTATS.create({
             name: target.id,
             credits: credits,
-            lashes: 0
+            lashes: 0,
+            lateRecord: 0
         })
     } else {
         element.increment("credits", { by: credits })
