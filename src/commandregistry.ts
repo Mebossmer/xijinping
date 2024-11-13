@@ -4,7 +4,7 @@ import path, { join } from "node:path";
 import fs from "node:fs"
 
 
-interface Command extends ChatInputApplicationCommandData {
+export interface Command extends ChatInputApplicationCommandData {
     run: (client: Client, interaction: CommandInteraction) => void
 }
 

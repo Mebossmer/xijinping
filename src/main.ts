@@ -124,6 +124,8 @@ client.on(Events.VoiceStateUpdate, async(oldVoiceState, newVoiceState) => {
 
     const credits = Math.round(-(TIMERINFO.time?.getTime() / 1000) * 15)
 
+    TIMERINFO.active = false
+
     await grantSocialCredits(TIMERINFO.target?.user, credits)
 
     TIMERINFO.msg?.edit({ embeds: [await getSocialCreditsEmbed(TIMERINFO.target.user, credits, reason)] })

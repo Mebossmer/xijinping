@@ -3,6 +3,7 @@ import { ApplicationCommandOptionType, Client, CommandInteraction, User } from "
 import { createReadStream } from "node:fs";
 import { join } from "node:path";
 import { getSocialCreditsEmbed, getSocialCreditsEmbedForUsers, grantSocialCreditstoUsers } from "../creditshelper";
+import { Command } from "../commandregistry";
 
 var voiceEnter: number
 var voiceLeave: number
@@ -10,6 +11,7 @@ var voiceLeave: number
 module.exports = {
     name: "propaganda",
     description: "farm social credits by spreading chinese culture!",
+    dmPermission: false,
     options: [
         {
             name: "operation",
@@ -29,7 +31,7 @@ module.exports = {
         }
     ],
     run: async(client: Client, interaction: CommandInteraction) => {
-        const op = interaction.options.get("operation")?.value
+        const op: number = interaction.options.get("operation")?.value as number
 
         if(!interaction.channel?.isVoiceBased()) {
             await interaction.followUp("This command has to be executed in a voice channel")
@@ -116,4 +118,4 @@ module.exports = {
             await interaction.followUp({ embeds: [await getSocialCreditsEmbed(interaction.user, credits, `Listened to chinese ~~propaganda~~ culture for ${diff} seconds`)] })
         }
     }
-}
+} as Command

@@ -1,9 +1,11 @@
 import { ApplicationCommandOptionType, Client, CommandInteraction, EmbedBuilder, UserResolvable } from "discord.js";
 import { USERSTATS } from "../main";
+import { Command } from "../commandregistry";
 
 module.exports = {
     name: "lash",
     description: "Lash a user for not working enough",
+    dmPermission: false,
     options: [
         {
             name: "target",
@@ -45,4 +47,4 @@ module.exports = {
                 .setTimestamp()]
             })
     }
-}
+} as Command

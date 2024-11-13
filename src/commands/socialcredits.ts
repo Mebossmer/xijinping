@@ -1,5 +1,6 @@
 import { ApplicationCommandOptionType, Client, CommandInteraction, PermissionFlagsBits, UserResolvable } from "discord.js";
 import { getSocialCreditsEmbed, grantSocialCredits } from "../creditshelper";
+import { Command } from "../commandregistry";
 
 module.exports = {
         name: "socialcredits",
@@ -46,4 +47,4 @@ module.exports = {
 
             await interaction.followUp({ embeds: [await getSocialCreditsEmbed(target.user, number, reason)] })
         }
-}
+} as Command
