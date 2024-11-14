@@ -1,4 +1,4 @@
-import { createAudioPlayer, createAudioResource, DiscordGatewayAdapterCreator, entersState, getVoiceConnection, joinVoiceChannel, NoSubscriberBehavior, VoiceConnectionStatus } from "@discordjs/voice";
+import { AudioPlayerStatus, createAudioPlayer, createAudioResource, DiscordGatewayAdapterCreator, entersState, getVoiceConnection, joinVoiceChannel, NoSubscriberBehavior, VoiceConnectionStatus } from "@discordjs/voice";
 import { ApplicationCommandOptionType, Client, CommandInteraction, User } from "discord.js";
 import { createReadStream } from "node:fs";
 import { join } from "node:path";
@@ -59,6 +59,12 @@ module.exports = {
                 }
             })
 
+            connection.subscribe(player)
+
+            player.on(AudioPlayerStatus.Idle, () => {
+                player.play(createAudioResource(createReadStream(join(__dirname, "../../resources/red_sun_in_the_sky.webm"))))
+            })
+
             player.on("error", error => {
                 interaction.followUp("Failed to start propaganda")
                 player.stop()
@@ -68,12 +74,9 @@ module.exports = {
             })
 
             connection.on(VoiceConnectionStatus.Ready, async(oldState, newState) => {
+                player.play(createAudioResource(createReadStream(join(__dirname, "../../resources/red_sun_in_the_sky.webm"))))
+
                 voiceEnter = new Date().getTime()
-
-                const resource = createAudioResource(createReadStream(join(__dirname, "../../resources/red_sun_in_the_sky.webm")))
-                player.play(resource)
-
-                connection.subscribe(player)
             })
 
             connection.on(VoiceConnectionStatus.Disconnected, async(oldState, newState) => {
