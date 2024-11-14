@@ -17,6 +17,6 @@ module.exports = {
 
         clearInterval(TIMERINFO.interval)
 
-        await interaction.followUp("Successfully cancelled timer 🇨🇳")
+        await interaction.followUp("Successfully cancelled timer")
     }
 } as Command

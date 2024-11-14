@@ -115,7 +115,7 @@ module.exports = {
 
             await grantSocialCreditstoUsers(users, credits)
 
-            await interaction.followUp({ embeds: [await getSocialCreditsEmbed(interaction.user, credits, `Listened to chinese ~~propaganda~~ culture for ${diff} seconds`)] })
+            await interaction.followUp({ embeds: [await getSocialCreditsEmbedForUsers(users, credits, `Listened to chinese ~~propaganda~~ culture for ${diff} seconds`)] })
         }
     }
 } as Command

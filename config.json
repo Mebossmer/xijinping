@@ -1,7 +1,13 @@
 {
-    "token": "MTMwMTg2MDA2NzgyMTQ5MDIyNw.GQojee.pVYVZkpu1f4OU8GpnIDOS-nLNhgxjBBOJAvRgk",
+    "token": "",
     "clientId": "1301860067821490227",
     "guildId": "1301865671503904768",
+    
+    "filterChannel": {
+        "active": true,
+        "channel": "1306658402772193400"
+    },
+
     "filter": [
         { "phrase": "mao", "amount": 1000 },
         { "phrase": "zedong", "amount": 1000 },

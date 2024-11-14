@@ -132,7 +132,7 @@ client.on(Events.VoiceStateUpdate, async(oldVoiceState, newVoiceState) => {
 })
 
 client.on(Events.MessageCreate, async message => {
-    handleFilter(message)
+    handleFilter(client, message)
 })
 
 client.login(token)

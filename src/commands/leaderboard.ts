@@ -81,10 +81,25 @@ module.exports = {
             }
         }
 
+        var leaderboardString = ""
+        switch(option) {
+            case 1:
+                leaderboardString = "Our most loyal members ✅"
+                break
+
+            case 2:
+                leaderboardString = "Our laziest workers 👎"
+                break
+
+            case 3:
+                leaderboardString = "Records for being late ⏰"
+                break
+        }
+
         const embed = new EmbedBuilder()
             .setColor(0xFF0000)
-            .setTitle("Leaderboard")
-            .setDescription("Our most loyal members")
+            .setTitle("🇨🇳 LEADERBOARD 🇨🇳")
+            .setDescription(leaderboardString)
             .addFields(fields)
             .setTimestamp()
 

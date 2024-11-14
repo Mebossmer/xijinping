@@ -1,6 +1,6 @@
 import { token, clientId, guildId } from "../config.json"
-import { APIEmbedField, ApplicationCommandOptionType, ChatInputApplicationCommandData, Client, Collection, CommandInteraction, EmbedBuilder, GuildMember, PermissionFlagsBits, REST, Routes, User, UserResolvable } from "discord.js";
-import path, { join } from "node:path";
+import { ChatInputApplicationCommandData, Client, CommandInteraction, REST, Routes, } from "discord.js";
+import path from "node:path";
 import fs from "node:fs"
 
 

@@ -1,8 +1,5 @@
-import fs from "node:fs"
-import path from "node:path"
-import { EmbedBuilder, User } from "discord.js"
+import { EmbedBuilder, TextChannel, User } from "discord.js"
 import { USERSTATS } from "./main"
-
 
 function getGif(credits: number): string {
     if(credits >= 0) {
@@ -52,10 +49,15 @@ export async function getSocialCreditsEmbedForUsers(targets: User[], credits: nu
         string = "+" + string
     }
 
+    var usrstr = ""
+    for(const user of targets) {
+        usrstr += `<@${user.id}> `
+    }
+
     return new EmbedBuilder()
         .setColor(0xFF0000)
         .setTitle("🚨 SOCIAL CREDITS 🚨")
-        .setDescription(`${string} social credits for ${targets}!`)
+        .setDescription(`${string} social credits for ${usrstr}!`)
         .addFields(
             { name: "Reason", value: reason }
         )
