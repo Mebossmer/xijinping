@@ -1,5 +1,6 @@
-import { EmbedBuilder, TextChannel, User } from "discord.js"
+import { EmbedBuilder, User } from "discord.js"
 import { USERSTATS } from "./main"
+import { enableExponentialNotation } from "../config.json"
 
 function getGif(credits: number): string {
     if(credits >= 0) {
@@ -17,12 +18,18 @@ export async function getSocialCreditsEmbed(target: User, credits: number, reaso
 
     const element = await USERSTATS.findOne({ where: { name: target.id } })
 
+    const value = (element?.get("credits") as number)
+    var textValue = value.toString()
+    if(enableExponentialNotation) {
+        textValue = value.toExponential()
+    }
+
     return new EmbedBuilder()
         .setColor(0xFF0000)
         .setTitle("🚨 SOCIAL CREDITS 🚨")
         .setDescription(`${string} social credits for ${target}!`)
         .addFields(
-            { name: "Current social credits", value: (element?.get("credits") as number).toString() },
+            { name: "Current social credits", value: textValue },
             { name: "Reason", value: reason }
         )
         .setImage(getGif(credits))
