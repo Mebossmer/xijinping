@@ -13,7 +13,7 @@ function getGif(credits: number): string {
 export async function getSocialCreditsEmbed(target: User, credits: number, reason: string) {
     var string = credits.toString()
     if(enableExponentialNotation) {
-        string = credits.toExponential()
+        string = credits.toExponential(2)
     }
     if(credits > 0) {
         string = "+" + string
@@ -24,7 +24,7 @@ export async function getSocialCreditsEmbed(target: User, credits: number, reaso
     const value = (element?.get("credits") as number)
     var textValue = value.toString()
     if(enableExponentialNotation) {
-        textValue = value.toExponential()
+        textValue = value.toExponential(2)
     }
 
     return new EmbedBuilder()
