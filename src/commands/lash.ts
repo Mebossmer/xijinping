@@ -1,5 +1,5 @@
 import { ApplicationCommandOptionType, Client, CommandInteraction, EmbedBuilder, UserResolvable } from "discord.js";
-import { USERSTATS } from "../main";
+import { LOGGER, USERSTATS } from "../main";
 import { Command } from "../commandregistry";
 
 module.exports = {
@@ -46,5 +46,7 @@ module.exports = {
                 .setImage("https://media1.tenor.com/m/55BnB0XphE0AAAAd/richard-attenborough-whip.gif")
                 .setTimestamp()]
             })
+
+        LOGGER.info(`User ${target.user} was lashed`)
     }
 } as Command

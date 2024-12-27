@@ -4,6 +4,7 @@ import { createReadStream } from "node:fs";
 import { join } from "node:path";
 import { getSocialCreditsEmbed, getSocialCreditsEmbedForUsers, grantSocialCreditstoUsers } from "../creditshelper";
 import { Command } from "../commandregistry";
+import { LOGGER } from "../main";
 
 var voiceEnter: number
 var voiceLeave: number
@@ -99,6 +100,8 @@ module.exports = {
             await grantSocialCreditstoUsers(users, 1000)
 
             await interaction.followUp({ embeds: [await getSocialCreditsEmbedForUsers(users, 1000, "Started listening to chinese ~~propaganda~~ culture")] })
+
+            LOGGER.info("Started listening to propaganda")
         } else {
             // stop culture
 
@@ -119,6 +122,8 @@ module.exports = {
             await grantSocialCreditstoUsers(users, credits)
 
             await interaction.followUp({ embeds: [await getSocialCreditsEmbedForUsers(users, credits, `Listened to chinese ~~propaganda~~ culture for ${diff} seconds`)] })
+
+            LOGGER.info("Stopped listening to propaganda")
         }
     }
 } as Command

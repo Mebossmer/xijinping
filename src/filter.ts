@@ -2,11 +2,14 @@ import { Client, Message, TextChannel } from "discord.js";
 import { filter } from "../config.json"
 import { getSocialCreditsEmbed, grantSocialCredits } from "./creditshelper";
 import { filterChannel } from "../config.json"
+import { LOGGER } from "./main";
 
 export function handleFilter(client: Client, message: Message) {
     const msg = message.content.toLowerCase()
     filter.forEach(async f => {
         if(msg.includes(f.phrase)) {
+            LOGGER.info(`Forbidden phrase (${f.phrase}) detected`)
+
             await grantSocialCredits(message.author, f.amount)
 
             if(filterChannel.active) {

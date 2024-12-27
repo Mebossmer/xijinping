@@ -1,6 +1,6 @@
 import { ApplicationCommandOptionType, ChannelType, Client, CommandInteraction, EmbedBuilder, GuildBasedChannel, GuildMember, Message, PermissionFlagsBits, Snowflake, UserResolvable } from "discord.js";
 import { getTimeString } from "../utils"
-import { TIMERINFO } from "../main"
+import { LOGGER, TIMERINFO } from "../main"
 import { Command } from "../commandregistry";
 
 module.exports = {
@@ -61,6 +61,8 @@ module.exports = {
             )
             .setTimestamp()
         ]})
+
+        LOGGER.info(`Started timer for user ${TIMERINFO.target.user}`)
 
         TIMERINFO.interval = setInterval(() => {
             if(!TIMERINFO.startTime) {

@@ -1,6 +1,6 @@
 import { Client, CommandInteraction, PermissionFlagsBits } from "discord.js";
 import { Command } from "../commandregistry";
-import { TIMERINFO } from "../main";
+import { LOGGER, TIMERINFO } from "../main";
 
 module.exports = {
     name: "stoptimer",
@@ -18,5 +18,7 @@ module.exports = {
         clearInterval(TIMERINFO.interval)
 
         await interaction.followUp("Successfully cancelled timer")
+
+        LOGGER.info(`Stopped timer for user ${TIMERINFO.target?.user}`)
     }
 } as Command

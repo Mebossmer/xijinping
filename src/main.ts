@@ -5,6 +5,7 @@ import { handleFilter } from "./filter"
 import { BIGINT, INTEGER, Sequelize, STRING } from "sequelize"
 import { getSocialCreditsEmbed, grantSocialCredits } from "./creditshelper"
 import { getTimeString } from "./utils"
+import winston from "winston"
 
 
 declare global {
@@ -24,6 +25,16 @@ interface TimerInfo {
    channel?: GuildBasedChannel
    active: boolean
 }
+
+export const LOGGER = winston.createLogger({
+    level: "info",
+    format: winston.format.cli(),
+    defaultMeta: { service: "user-service" },
+    transports: [
+        new winston.transports.File({ filename: "info.log" }),
+        new winston.transports.Console()
+    ]
+})
 
 export var TIMERINFO: TimerInfo = { active: false }
 
@@ -57,7 +68,7 @@ export const USERSTATS = sequelize.define("credits", {
 
 
 client.once(Events.ClientReady, async readyClient => {
-    console.log(`Logged in as ${readyClient.user.tag}`)
+    LOGGER.info(`Logged in as ${readyClient.user.tag}`)
     
     USERSTATS.sync()
     deployCommands(readyClient)

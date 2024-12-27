@@ -2,6 +2,7 @@ import { token, clientId, guildId } from "../config.json"
 import { ChatInputApplicationCommandData, Client, CommandInteraction, REST, Routes, } from "discord.js";
 import path from "node:path";
 import fs from "node:fs"
+import { LOGGER } from "./main";
 
 
 export interface Command extends ChatInputApplicationCommandData {
@@ -30,7 +31,7 @@ export async function deployCommands(client: Client) {
         { body: commands }
     )
 
-    console.log(`deployed ${commands.length} application commands`)
+    LOGGER.info(`deployed ${commands.length} application commands`)
 }
 
 export async function handleCommand(client: Client, interaction: CommandInteraction) {

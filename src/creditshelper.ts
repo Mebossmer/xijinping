@@ -1,5 +1,5 @@
 import { EmbedBuilder, User } from "discord.js"
-import { USERSTATS } from "./main"
+import { LOGGER, USERSTATS } from "./main"
 import { enableExponentialNotation } from "../config.json"
 
 function getGif(credits: number): string {
@@ -51,6 +51,8 @@ export async function grantSocialCredits(target: User, credits: number) {
     } else {
         element.increment("credits", { by: credits })
     }
+
+    LOGGER.info(`User ${target} received ${credits} Social Credits`)
 }
 
 export async function getSocialCreditsEmbedForUsers(targets: User[], credits: number, reason: string) {
